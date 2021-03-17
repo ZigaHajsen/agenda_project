@@ -17,16 +17,21 @@ const CreateBucket: React.FC<any> = ({ setToggleCreation }) => {
   };
 
   return (
-    <Form onSubmit={handleSubmit}>
+    <Form onSubmit={handleSubmit} className='mb-3 mt-3'>
       <Row>
         <Col>
-          <Form.Control placeholder='Name' type='text' ref={name} />
+          <Form.Control placeholder='Name' type='text' ref={name} required />
         </Col>
         <Col>
-          <Form.Control placeholder='Location' type='text' ref={location} />
+          <Form.Control
+            placeholder='Location'
+            type='text'
+            ref={location}
+            required
+          />
         </Col>
       </Row>
-      <Button variant='success' type='submit'>
+      <Button variant='success' type='submit' className='mt-3'>
         Create Bucket
       </Button>
     </Form>
