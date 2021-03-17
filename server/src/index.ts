@@ -6,11 +6,13 @@ dotenv.config();
 
 connectDB();
 
+const buckets = require('./routes/buckets');
+
 const app = express();
 
-app.get('/', (req, res) => res.json({ msg: 'Buckets api' }));
+app.use(express.json());
 
-app.use('/api/buckets', require('./routes/buckets'));
+app.use('/api/buckets', buckets);
 
 const PORT = process.env.PORT || 5000;
 

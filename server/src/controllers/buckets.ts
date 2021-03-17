@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import Bucket, { IBucket } from '../models/Bucket';
 
 // @route       GET api/buckets
 // @desc        Get all buckets
@@ -19,6 +20,16 @@ export const createBucket = async (
   res: Response,
   next: NextFunction
 ) => {
+  const { name, location } = req.body;
+
   try {
-  } catch (err) {}
+    const newBucket = new Bucket({ name, location });
+
+    const bucket = await newBucket.save();
+
+    res.json(bucket);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
+  }
 };
