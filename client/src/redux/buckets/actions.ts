@@ -16,3 +16,28 @@ export const getBuckets = () => async (dispatch: redux.Dispatch) => {
     });
   }
 };
+
+export const createBucket = (name: string, location: string) => async (
+  dispatch: any
+) => {
+  const config = {
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  };
+
+  const body = JSON.stringify({ name, location });
+  try {
+    const res = await axios.post('/api/buckets', body, config);
+
+    dispatch({
+      type: bucketActionTypes.CREATE_BUCKET_SUCCESS,
+      payload: res.data,
+    });
+    dispatch(getBuckets());
+  } catch (err) {
+    dispatch({
+      type: bucketActionTypes.CREATE_BUCKET_FAIL,
+    });
+  }
+};

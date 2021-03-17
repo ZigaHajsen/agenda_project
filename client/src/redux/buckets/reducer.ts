@@ -7,8 +7,9 @@ export const bucketsReducer = (state = [], action: redux.AnyAction) => {
   switch (type) {
     case bucketActionTypes.GET_BUCKETS_SUCCESS:
       return payload;
+    case bucketActionTypes.CREATE_BUCKET_SUCCESS:
     case bucketActionTypes.GET_BUCKETS_FAIL:
-      return payload;
+    case bucketActionTypes.CREATE_BUCKET_FAIL:
     default:
       return state;
   }
