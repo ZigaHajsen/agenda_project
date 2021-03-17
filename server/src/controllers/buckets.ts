@@ -9,7 +9,12 @@ export const getBuckets = async (
   res: Response,
   next: NextFunction
 ) => {
-  res.send('Get all buckets');
+  try {
+    const buckets = await Bucket.find().sort({ date: -1 });
+    res.json(buckets);
+  } catch (err) {
+    console.error(err.message);
+  }
 };
 
 // @route       POST api/buckets
