@@ -1,3 +1,6 @@
 import { combineReducers } from 'redux';
+import { bucketsReducer } from './buckets/reducer';
 
-export default combineReducers({});
+export default combineReducers({
+  buckets: bucketsReducer,
+});

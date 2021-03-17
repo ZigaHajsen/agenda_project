@@ -1,0 +1,4 @@
+export const bucketActionTypes = {
+  GET_BUCKETS_SUCCESS: 'GET_BUCKETS_SUCCESS',
+  GET_BUCKETS_FAIL: 'GET_BUCKETS_FAIL',
+};

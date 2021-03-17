@@ -1,11 +1,15 @@
-import { Bucket } from '../components';
+import { Fragment } from 'react';
+import { Buckets } from '../components';
+import { Navbar } from 'react-bootstrap';
 
 const BucketList = () => {
   return (
-    <div>
-      Bucket List
-      <Bucket />
-    </div>
+    <Fragment>
+      <Navbar bg='dark'>
+        <Navbar.Brand>Secure cloud storage</Navbar.Brand>
+      </Navbar>
+      <Buckets />
+    </Fragment>
   );
 };
 
