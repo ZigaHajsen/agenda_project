@@ -6,8 +6,6 @@ import { Navbar } from 'react-bootstrap';
 const BucketList = () => {
   const render = useSelector((state: any) => state.render.files);
 
-  console.log(render);
-
   return (
     <Fragment>
       <Navbar bg='dark'>
