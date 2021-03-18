@@ -11,8 +11,6 @@ const Buckets = () => {
   const buckets = useSelector((state: any) => state.buckets);
   const render = useSelector((state: any) => state.render.createNewBucket);
 
-  console.log(render);
-
   useEffect(() => {
     dispatch(getBuckets());
   }, [dispatch]);
