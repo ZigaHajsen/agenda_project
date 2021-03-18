@@ -2,14 +2,17 @@ import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
 
 interface BucketProps {
+  bucketId: string;
   name: string;
   location: string;
 }
 
-const Bucket: React.FC<BucketProps> = ({ name, location }) => {
+const Bucket: React.FC<BucketProps> = ({ bucketId, name, location }) => {
   return (
     <BucketRow>
-      <Col>{name}</Col>
+      <Col>
+        <span onClick={() => console.log(bucketId)}>{name}</span>
+      </Col>
       <Col>{location}</Col>
     </BucketRow>
   );

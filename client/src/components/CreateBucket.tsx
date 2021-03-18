@@ -1,10 +1,11 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
+import { createNewBucketOff } from '../redux/render/actions';
 import { createBucket } from '../redux/buckets/actions';
 import styled from 'styled-components/macro';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 
-const CreateBucket: React.FC<any> = ({ setToggleCreation }) => {
+const CreateBucket: React.FC<any> = () => {
   const name = useRef<HTMLInputElement>(null);
   const location = useRef<HTMLInputElement>(null);
 
@@ -14,7 +15,7 @@ const CreateBucket: React.FC<any> = ({ setToggleCreation }) => {
     e.preventDefault();
 
     dispatch(createBucket(name.current!.value, location.current!.value));
-    setToggleCreation(false);
+    dispatch(createNewBucketOff());
   };
 
   return (
@@ -40,7 +41,7 @@ const CreateBucket: React.FC<any> = ({ setToggleCreation }) => {
         <Button
           variant='danger'
           className='mt-3'
-          onClick={() => setToggleCreation(false)}
+          onClick={() => dispatch(createNewBucketOff())}
         >
           Cancel
         </Button>

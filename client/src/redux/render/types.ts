@@ -1,0 +1,4 @@
+export const renderActionTypes = {
+  CREATE_NEW_BUCKET_ON: 'CREATE_NEW_BUCKET_ON',
+  CREATE_NEW_BUCKET_OFF: 'CREATE_NEW_BUCKET_OFF',
+};

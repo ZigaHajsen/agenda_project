@@ -1,17 +1,17 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { createNewBucketOn } from '../redux/render/actions';
 import { getBuckets } from '../redux/buckets/actions';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Bucket, CreateBucket } from '../components';
 
 const Buckets = () => {
-  const [toggleCreation, setToggleCreation] = useState(false);
-
   const dispatch = useDispatch();
   const buckets = useSelector((state: any) => state.buckets);
+  const render = useSelector((state: any) => state.render.createNewBucket);
 
-  console.log(buckets);
+  console.log(render);
 
   useEffect(() => {
     dispatch(getBuckets());
@@ -20,13 +20,14 @@ const Buckets = () => {
   return (
     <Fragment>
       <Container>
-        {toggleCreation && (
-          <CreateBucket setToggleCreation={setToggleCreation} />
-        )}
+        {render && <CreateBucket />}
         <Nav className='mb-3 mt-3'>
           <div>All buckets ({buckets.length})</div>
           <div>
-            <Button variant='success' onClick={() => setToggleCreation(true)}>
+            <Button
+              variant='success'
+              onClick={() => dispatch(createNewBucketOn())}
+            >
               Create New Bucket
             </Button>
           </div>
@@ -39,7 +40,14 @@ const Buckets = () => {
           {buckets.map((bucket: any) => {
             const { _id, name, location } = bucket;
 
-            return <Bucket key={_id} name={name} location={location} />;
+            return (
+              <Bucket
+                key={_id}
+                bucketId={_id}
+                name={name}
+                location={location}
+              />
+            );
           })}
         </div>
         <Border></Border>
