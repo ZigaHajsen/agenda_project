@@ -8,14 +8,30 @@ import { File } from '../components';
 const Files = () => {
   const dispatch = useDispatch();
 
+  const handleChange = (e: any) => {
+    console.log(e.target.files[0]);
+  };
+
   return (
     <Fragment>
       <Container>
+        <Row>
+          <Button variant='success mt-3'>Delete Object</Button>
+          <Button variant='primary mt-3'>Upload Object</Button>
+        </Row>
         <Nav className='mb-3 mt-3'>
           <div>All buckets ()</div>
           <div>
             <Button variant='danger'>Delete Object</Button>
-            <Button variant='success'>Upload Object</Button>
+            <input
+              type='file'
+              id='file'
+              style={{ display: 'none' }}
+              onChange={handleChange}
+            />
+            <label htmlFor='file' className='btn btn-success mb-0'>
+              Upload Object
+            </label>
           </div>
         </Nav>
         <TableNav>
