@@ -1,14 +1,19 @@
 import { Fragment } from 'react';
-import { Buckets } from '../components';
+import { useSelector } from 'react-redux';
+import { Buckets, Files } from '../components';
 import { Navbar } from 'react-bootstrap';
 
 const BucketList = () => {
+  const render = useSelector((state: any) => state.render.files);
+
+  console.log(render);
+
   return (
     <Fragment>
       <Navbar bg='dark'>
         <Navbar.Brand>Secure cloud storage</Navbar.Brand>
       </Navbar>
-      <Buckets />
+      {render ? <Files /> : <Buckets />}
     </Fragment>
   );
 };
