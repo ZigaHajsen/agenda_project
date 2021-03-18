@@ -1,5 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
-import Bucket, { IBucket } from '../models/Bucket';
+import Bucket from '../models/Bucket';
 
 // @route       GET api/buckets
 // @desc        Get all buckets
