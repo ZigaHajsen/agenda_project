@@ -1,6 +1,7 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { createBucket } from '../redux/buckets/actions';
+import styled from 'styled-components/macro';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 
 const CreateBucket: React.FC<any> = ({ setToggleCreation }) => {
@@ -31,11 +32,26 @@ const CreateBucket: React.FC<any> = ({ setToggleCreation }) => {
           />
         </Col>
       </Row>
-      <Button variant='success' type='submit' className='mt-3'>
-        Create Bucket
-      </Button>
+      <Nav>
+        <Button variant='success' type='submit' className='mt-3'>
+          Create Bucket
+        </Button>
+
+        <Button
+          variant='danger'
+          className='mt-3'
+          onClick={() => setToggleCreation(false)}
+        >
+          Cancel
+        </Button>
+      </Nav>
     </Form>
   );
 };
 
 export default CreateBucket;
+
+const Nav = styled(Row)`
+  display: flex;
+  justify-content: space-between;
+`;
