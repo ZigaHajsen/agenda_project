@@ -14,6 +14,13 @@ export const createNewBucketOff = () => (dispatch: any) => {
   });
 };
 
+export const setBucket = (bucketId: string) => (dispatch: any) => {
+  dispatch({
+    type: renderActionTypes.SET_BUCKET,
+    payload: bucketId,
+  });
+};
+
 export const filesOn = () => (dispatch: any) => {
   dispatch({
     type: renderActionTypes.FILES_ON,

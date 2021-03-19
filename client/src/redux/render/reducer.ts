@@ -4,6 +4,7 @@ import { renderActionTypes } from './types';
 const initialState = {
   files: false,
   createNewBucket: false,
+  bucket: null,
 };
 
 export const renderReducer = (
@@ -18,6 +19,11 @@ export const renderReducer = (
       return {
         ...state,
         createNewBucket: payload,
+      };
+    case renderActionTypes.SET_BUCKET:
+      return {
+        ...state,
+        bucket: payload,
       };
     case renderActionTypes.FILES_ON:
     case renderActionTypes.FILES_OFF:

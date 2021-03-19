@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filesOn } from '../redux/render/actions';
+import { filesOn, setBucket } from '../redux/render/actions';
 import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
 
@@ -12,10 +12,15 @@ interface BucketProps {
 const Bucket: React.FC<BucketProps> = ({ bucketId, name, location }) => {
   const dispatch = useDispatch();
 
+  const handleClick = (e: any) => {
+    dispatch(filesOn());
+    dispatch(setBucket(bucketId));
+  };
+
   return (
     <BucketRow>
       <Col>
-        <span onClick={() => dispatch(filesOn())}>{name}</span>
+        <span onClick={handleClick}>{name}</span>
       </Col>
       <Col>{location}</Col>
     </BucketRow>
