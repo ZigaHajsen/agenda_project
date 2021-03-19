@@ -25,6 +25,11 @@ export const renderReducer = (
         ...state,
         bucket: payload,
       };
+    case renderActionTypes.REMOVE_BUCKET:
+      return {
+        ...state,
+        bucket: payload,
+      };
     case renderActionTypes.FILES_ON:
     case renderActionTypes.FILES_OFF:
       return {
