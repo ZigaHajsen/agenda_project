@@ -18,7 +18,7 @@ export const getBuckets = async (
 };
 
 // @route       POST api/buckets
-// @desc        Get all buckets
+// @desc        Create a new bucket
 // @access      Public
 export const createBucket = async (
   req: Request,
