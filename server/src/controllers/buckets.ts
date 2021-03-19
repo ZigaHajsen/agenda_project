@@ -17,6 +17,22 @@ export const getBuckets = async (
   }
 };
 
+// @route       GET api/buckets/:bucketId
+// @desc        Get a bucket
+// @access      Public
+export const getBucket = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const bucket = await Bucket.findById(req.params.bucketId);
+    res.json(bucket);
+  } catch (err) {
+    console.error(err.message);
+  }
+};
+
 // @route       POST api/buckets
 // @desc        Create a new bucket
 // @access      Public
