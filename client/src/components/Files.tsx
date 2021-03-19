@@ -31,13 +31,12 @@ const Files = () => {
     <Fragment>
       <Container>
         <Row>
-          <Button variant='success mt-3'>Delete Object</Button>
-          <Button variant='primary mt-3'>Upload Object</Button>
+          <Button variant='success mt-3 disabled'>Files</Button>
+          <Button variant='success mt-3'>Details</Button>
         </Row>
         <Nav className='mb-3 mt-3'>
           <div>All buckets ()</div>
           <div>
-            <Button variant='danger'>Delete Object</Button>
             <input
               type='file'
               id='file'
