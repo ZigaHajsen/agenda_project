@@ -14,6 +14,7 @@ export const getBuckets = async (
     res.json(buckets);
   } catch (err) {
     console.error(err.message);
+    res.status(500).send('Server error');
   }
 };
 
@@ -30,6 +31,23 @@ export const getBucket = async (
     res.json(bucket);
   } catch (err) {
     console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+export const deleteBucket = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const bucket = await Bucket.findById(req.params.bucketId);
+    await bucket?.remove();
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
   }
 };
 
