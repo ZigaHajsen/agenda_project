@@ -69,9 +69,12 @@ const Files = () => {
           })}
         </div>
         <Border></Border>
-        <Button variant='danger' onClick={handleClick}>
-          Back
-        </Button>
+        <Nav>
+          <div></div>
+          <Button variant='danger' className='mt-3' onClick={handleClick}>
+            Back
+          </Button>
+        </Nav>
       </Container>
     </Fragment>
   );
