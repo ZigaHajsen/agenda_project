@@ -1,15 +1,24 @@
 import { Fragment } from 'react';
-import { useDispatch } from 'react-redux';
-import { filesOff } from '../redux/render/actions';
+import { useDispatch, useSelector } from 'react-redux';
+import { filesOff, removeBucket } from '../redux/render/actions';
+import { uploadFile } from '../redux/files/actions';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { File } from '../components';
 
 const Files = () => {
   const dispatch = useDispatch();
+  const bucketId = useSelector((state: any) => state.render.bucket);
 
-  const handleChange = (e: any) => {
-    console.log(e.target.files[0]);
+  const handleClick = (e: any) => {
+    dispatch(removeBucket());
+    dispatch(filesOff());
+  };
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, size, lastModified } = e.target.files![0];
+
+    dispatch(uploadFile(name, size, lastModified, bucketId));
   };
 
   return (
@@ -41,7 +50,7 @@ const Files = () => {
         </TableNav>
         <File />
         <Border></Border>
-        <Button variant='danger' onClick={() => dispatch(filesOff())}>
+        <Button variant='danger' onClick={handleClick}>
           Back
         </Button>
       </Container>

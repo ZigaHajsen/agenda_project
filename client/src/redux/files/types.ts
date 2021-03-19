@@ -1,0 +1,4 @@
+export const fileActionTypes = {
+  UPLOAD_FILE_SUCCESS: 'UPLOAD_FILE_SUCCESS',
+  UPLOAD_FILE_FAIL: 'UPLOAD_FILE_FAIL',
+};
