@@ -1,3 +1,4 @@
+import prettyBytes from 'pretty-bytes';
 import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
 
@@ -9,11 +10,14 @@ interface FileProps {
 }
 
 const File: React.FC<FileProps> = ({ fileId, name, size, lastModified }) => {
+  const date = new Date(lastModified);
+  date.toLocaleDateString();
+
   return (
     <FileRow>
       <Col>{name}</Col>
-      <Col>{lastModified}</Col>
-      <Col>{size}</Col>
+      <Col>{date.toLocaleDateString()}</Col>
+      <Col>{prettyBytes(size)}</Col>
     </FileRow>
   );
 };
