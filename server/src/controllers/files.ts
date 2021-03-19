@@ -1,5 +1,4 @@
 import { Request, Response, NextFunction } from 'express';
-import Bucket from '../models/Bucket';
 import File from '../models/File';
 
 // @route     GET /api/buckets/:bucketId/files
@@ -17,6 +16,22 @@ export const getFiles = async (
   } catch (err) {
     console.error(err.message);
     res.status(500).send('Server error');
+  }
+};
+
+// @route       GET api/files/:fileId
+// @desc        Get a bucket
+// @access      Public
+export const getFile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const file = await File.findById(req.params.fileId);
+    res.json(file);
+  } catch (err) {
+    console.error(err.message);
   }
 };
 
