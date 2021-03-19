@@ -1,4 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
+import { countReset } from 'node:console';
 import File from '../models/File';
 
 // @route     GET /api/buckets/:bucketId/files
@@ -32,6 +33,26 @@ export const getFile = async (
     res.json(file);
   } catch (err) {
     console.error(err.message);
+    res.status(500).send('Server error');
+  }
+};
+
+// @route       DELETE api/files/:fileId
+// @desc        Get a bucket
+// @access      Public
+export const deleteFile = async (
+  req: Request,
+  res: Response,
+  next: NextFunction
+) => {
+  try {
+    const file = await File.findById(req.params.fileId);
+    await file?.remove();
+
+    res.json({ success: true });
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server error');
   }
 };
 
