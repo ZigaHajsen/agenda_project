@@ -1,8 +1,8 @@
 import express from 'express';
-import { uploadFile } from '../controllers/files';
+import { uploadFile, getFiles } from '../controllers/files';
 
 const router = express.Router({ mergeParams: true });
 
-router.route('/').post(uploadFile);
+router.route('/').post(uploadFile).get(getFiles);
 
 export = router;
