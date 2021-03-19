@@ -1,7 +1,7 @@
 import { useRef } from 'react';
 import { useDispatch } from 'react-redux';
 import { createNewBucketOff } from '../redux/render/actions';
-import { createBucket } from '../redux/buckets/actions';
+import { createBucket, getBuckets } from '../redux/buckets/actions';
 import styled from 'styled-components/macro';
 import { Button, Form, Row, Col } from 'react-bootstrap';
 
@@ -15,6 +15,7 @@ const CreateBucket: React.FC<any> = () => {
     e.preventDefault();
 
     dispatch(createBucket(name.current!.value, location.current!.value));
+    dispatch(getBuckets());
     dispatch(createNewBucketOff());
   };
 

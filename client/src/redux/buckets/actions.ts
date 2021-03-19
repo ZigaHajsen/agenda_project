@@ -18,7 +18,7 @@ export const getBuckets = () => async (dispatch: redux.Dispatch) => {
 };
 
 export const createBucket = (name: string, location: string) => async (
-  dispatch: any
+  dispatch: redux.Dispatch
 ) => {
   const config = {
     headers: {
@@ -34,7 +34,6 @@ export const createBucket = (name: string, location: string) => async (
       type: bucketActionTypes.CREATE_BUCKET_SUCCESS,
       payload: res.data,
     });
-    dispatch(getBuckets());
   } catch (err) {
     dispatch({
       type: bucketActionTypes.CREATE_BUCKET_FAIL,
