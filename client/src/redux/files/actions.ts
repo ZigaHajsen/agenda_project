@@ -33,3 +33,20 @@ export const uploadFile = (
     });
   }
 };
+
+export const getFiles = (bucketId: string) => async (
+  dispatch: redux.Dispatch
+) => {
+  try {
+    const res = await axios.get(`/api/buckets/${bucketId}/files`);
+
+    dispatch({
+      type: fileActionTypes.GET_FILES_SUCCESS,
+      payload: res.data,
+    });
+  } catch (err) {
+    dispatch({
+      type: fileActionTypes.GET_FILES_FAIL,
+    });
+  }
+};

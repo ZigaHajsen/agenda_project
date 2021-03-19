@@ -1,7 +1,7 @@
-import { Fragment } from 'react';
+import { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { filesOff, removeBucket } from '../redux/render/actions';
-import { uploadFile } from '../redux/files/actions';
+import { uploadFile, getFiles } from '../redux/files/actions';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { File } from '../components';
@@ -9,6 +9,7 @@ import { File } from '../components';
 const Files = () => {
   const dispatch = useDispatch();
   const bucketId = useSelector((state: any) => state.render.bucket);
+  const files = useSelector((state: any) => state.files);
 
   const handleClick = (e: any) => {
     dispatch(removeBucket());
@@ -20,6 +21,10 @@ const Files = () => {
 
     dispatch(uploadFile(name, size, lastModified, bucketId));
   };
+
+  useEffect(() => {
+    dispatch(getFiles(bucketId));
+  }, [dispatch, bucketId]);
 
   return (
     <Fragment>
@@ -48,7 +53,21 @@ const Files = () => {
           <Col>Last Modified</Col>
           <Col>Size</Col>
         </TableNav>
-        <File />
+        <div>
+          {files.map((file: any) => {
+            const { _id, name, size, lastModified } = file;
+
+            return (
+              <File
+                key={_id}
+                fileId={_id}
+                name={name}
+                size={size}
+                lastModified={lastModified}
+              />
+            );
+          })}
+        </div>
         <Border></Border>
         <Button variant='danger' onClick={handleClick}>
           Back

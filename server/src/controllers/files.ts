@@ -3,7 +3,7 @@ import { countReset } from 'node:console';
 import File from '../models/File';
 
 // @route     GET /api/buckets/:bucketId/files
-// @desc      Add file
+// @desc      Get files
 // @access    Public
 export const getFiles = async (
   req: Request,
@@ -21,7 +21,7 @@ export const getFiles = async (
 };
 
 // @route       GET api/files/:fileId
-// @desc        Get a bucket
+// @desc        Get a file
 // @access      Public
 export const getFile = async (
   req: Request,
@@ -38,7 +38,7 @@ export const getFile = async (
 };
 
 // @route       DELETE api/files/:fileId
-// @desc        Get a bucket
+// @desc        Delete file
 // @access      Public
 export const deleteFile = async (
   req: Request,
