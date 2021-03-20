@@ -1,10 +1,19 @@
 import { useDispatch } from 'react-redux';
-import { bucketDetailsOff } from '../redux/render/actions';
+import {
+  filesOff,
+  removeBucket,
+  bucketDetailsOff,
+} from '../redux/render/actions';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 
 const BucketDetails = () => {
   const dispatch = useDispatch();
+
+  const handleClick = () => {
+    dispatch(removeBucket());
+    dispatch(filesOff());
+  };
   return (
     <Container>
       <Row>
@@ -28,7 +37,7 @@ const BucketDetails = () => {
       <Border></Border>
       <Nav>
         <div></div>
-        <Button variant='danger' className='mt-3'>
+        <Button variant='danger' className='mt-3' onClick={handleClick}>
           Back
         </Button>
       </Nav>

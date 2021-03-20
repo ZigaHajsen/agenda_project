@@ -44,7 +44,7 @@ const Files = () => {
           </Button>
         </Row>
         <Nav className='mb-3 mt-3'>
-          <div>All buckets ()</div>
+          <div>All files ({files.length})</div>
           <div>
             <input
               type='file'
