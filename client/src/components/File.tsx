@@ -1,6 +1,9 @@
+import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import {} from '../redux/files/actions';
 import prettyBytes from 'pretty-bytes';
 import styled from 'styled-components/macro';
-import { Row, Col } from 'react-bootstrap';
+import { Row, Col, Modal, Button } from 'react-bootstrap';
 import { FaFileAlt } from 'react-icons/fa';
 import { MdDeleteForever } from 'react-icons/md';
 
@@ -12,12 +15,17 @@ interface FileProps {
 }
 
 const File: React.FC<FileProps> = ({ fileId, name, size, lastModified }) => {
+  const [open, setOpen] = useState(false);
+
+  const openModal = () => {
+    setOpen(true);
+  };
+  const closeModal = () => {
+    setOpen(false);
+  };
+
   const date = new Date(lastModified);
   date.toLocaleDateString();
-
-  const handleClick = (e: any) => {
-    console.log('click');
-  };
 
   return (
     <FileRow>
@@ -26,7 +34,22 @@ const File: React.FC<FileProps> = ({ fileId, name, size, lastModified }) => {
       </Col>
       <Col>{date.toLocaleDateString()}</Col>
       <Col>{prettyBytes(size)}</Col>
-      <MdDeleteForever className='mr-3 mt-1' onClick={handleClick} />
+      <MdDeleteForever className='mr-3 mt-1' onClick={openModal} />
+      <Modal show={open} onHide={closeModal}>
+        <Modal.Body>Do you really want to delete this object?</Modal.Body>
+        <Modal.Footer>
+          <Button variant='success' onClick={closeModal}>
+            Close
+          </Button>
+          <Button
+            variant='danger'
+            type='submit'
+            onClick={() => console.log(fileId)}
+          >
+            Delete
+          </Button>
+        </Modal.Footer>
+      </Modal>
     </FileRow>
   );
 };
