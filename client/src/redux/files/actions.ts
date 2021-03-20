@@ -34,6 +34,22 @@ export const uploadFile = (
   }
 };
 
+export const deleteFile = (fileId: string) => async (
+  dispatch: redux.Dispatch
+) => {
+  try {
+    await axios.delete(`/api/files/${fileId}`);
+
+    dispatch({
+      type: fileActionTypes.DELETE_FILE_SUCCESS,
+    });
+  } catch (err) {
+    dispatch({
+      type: fileActionTypes.DELETE_FILE_FAIL,
+    });
+  }
+};
+
 export const getFiles = (bucketId: string) => async (
   dispatch: redux.Dispatch
 ) => {

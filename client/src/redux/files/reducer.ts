@@ -9,6 +9,8 @@ export const filesReducer = (state = [], action: redux.AnyAction) => {
       return payload;
     case fileActionTypes.UPLOAD_FILE_SUCCESS:
     case fileActionTypes.UPLOAD_FILE_FAIL:
+    case fileActionTypes.DELETE_FILE_SUCCESS:
+    case fileActionTypes.DELETE_FILE_FAIL:
     default:
       return state;
   }

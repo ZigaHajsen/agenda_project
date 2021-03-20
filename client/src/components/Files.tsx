@@ -11,7 +11,7 @@ const Files = () => {
   const bucketId = useSelector((state: any) => state.render.bucket);
   const files = useSelector((state: any) => state.files);
 
-  const handleClick = (e: any) => {
+  const handleClick = () => {
     dispatch(removeBucket());
     dispatch(filesOff());
   };
@@ -61,6 +61,7 @@ const Files = () => {
               <File
                 key={_id}
                 fileId={_id}
+                bucketId={bucketId}
                 name={name}
                 size={size}
                 lastModified={lastModified}
