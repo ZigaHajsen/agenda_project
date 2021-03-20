@@ -1,6 +1,7 @@
 import axios from 'axios';
 import redux from 'redux';
 import { bucketActionTypes } from './types';
+import { createNewBucketOff } from '../render/actions';
 
 export const getBuckets = () => async (dispatch: redux.Dispatch) => {
   try {
@@ -18,7 +19,7 @@ export const getBuckets = () => async (dispatch: redux.Dispatch) => {
 };
 
 export const createBucket = (name: string, location: string) => async (
-  dispatch: redux.Dispatch
+  dispatch: any
 ) => {
   const config = {
     headers: {
@@ -34,6 +35,8 @@ export const createBucket = (name: string, location: string) => async (
       type: bucketActionTypes.CREATE_BUCKET_SUCCESS,
       payload: res.data,
     });
+    dispatch(getBuckets());
+    dispatch(createNewBucketOff());
   } catch (err) {
     dispatch({
       type: bucketActionTypes.CREATE_BUCKET_FAIL,

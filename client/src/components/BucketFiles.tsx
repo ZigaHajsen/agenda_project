@@ -24,7 +24,6 @@ const Files = () => {
     const { name, size, lastModified } = e.target.files![0];
 
     dispatch(uploadFile(name, size, lastModified, bucketId));
-    dispatch(getFiles(bucketId));
   };
 
   useEffect(() => {

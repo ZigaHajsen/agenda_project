@@ -7,7 +7,7 @@ export const uploadFile = (
   size: number,
   lastModified: number,
   bucketId: string
-) => async (dispatch: redux.Dispatch) => {
+) => async (dispatch: any) => {
   const config = {
     headers: {
       'Content-Type': 'application/json',
@@ -27,6 +27,7 @@ export const uploadFile = (
       type: fileActionTypes.UPLOAD_FILE_SUCCESS,
       payload: res.data,
     });
+    dispatch(getFiles(bucketId));
   } catch (err) {
     dispatch({
       type: fileActionTypes.UPLOAD_FILE_FAIL,
@@ -34,8 +35,8 @@ export const uploadFile = (
   }
 };
 
-export const deleteFile = (fileId: string) => async (
-  dispatch: redux.Dispatch
+export const deleteFile = (fileId: string, bucketId: string) => async (
+  dispatch: any
 ) => {
   try {
     await axios.delete(`/api/files/${fileId}`);
@@ -43,6 +44,7 @@ export const deleteFile = (fileId: string) => async (
     dispatch({
       type: fileActionTypes.DELETE_FILE_SUCCESS,
     });
+    dispatch(getFiles(bucketId));
   } catch (err) {
     dispatch({
       type: fileActionTypes.DELETE_FILE_FAIL,

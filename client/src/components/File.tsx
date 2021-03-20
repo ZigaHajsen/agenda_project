@@ -33,8 +33,7 @@ const File: React.FC<FileProps> = ({
   };
 
   const handleClick = () => {
-    dispatch(deleteFile(fileId));
-    dispatch(getFiles(bucketId));
+    dispatch(deleteFile(fileId, bucketId));
     closeModal();
   };
 
