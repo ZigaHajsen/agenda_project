@@ -22,4 +22,9 @@ const BucketSchema = new mongoose.Schema({
   },
 });
 
+BucketSchema.pre('remove', async function (next) {
+  await this.model('File').deleteMany({ bucket: this._id });
+  next();
+});
+
 export default mongoose.model('Bucket', BucketSchema);
