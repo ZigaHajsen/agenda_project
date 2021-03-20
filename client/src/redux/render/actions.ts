@@ -1,4 +1,5 @@
 import redux from 'redux';
+import axios from 'axios';
 import { renderActionTypes } from './types';
 
 export const createNewBucketOn = () => (dispatch: redux.Dispatch) => {
@@ -15,18 +16,27 @@ export const createNewBucketOff = () => (dispatch: redux.Dispatch) => {
   });
 };
 
-export const setBucket = (bucketId: string) => (dispatch: redux.Dispatch) => {
-  dispatch({
-    type: renderActionTypes.SET_BUCKET,
-    payload: bucketId,
-  });
-};
-
 export const removeBucket = () => (dispatch: redux.Dispatch) => {
   dispatch({
     type: renderActionTypes.REMOVE_BUCKET,
     payload: null,
   });
+};
+
+export const setBucket = (bucketId: string) => async (dispatch: any) => {
+  try {
+    const res = await axios.get(`api/buckets/${bucketId}`);
+
+    dispatch({
+      type: renderActionTypes.SET_BUCKET_SUCCESS,
+      payload: res.data,
+    });
+    dispatch(filesOn());
+  } catch (err) {
+    dispatch({
+      type: renderActionTypes.SET_BUCKET_FAIL,
+    });
+  }
 };
 
 export const filesOn = () => (dispatch: redux.Dispatch) => {

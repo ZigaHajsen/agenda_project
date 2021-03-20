@@ -21,7 +21,7 @@ export const renderReducer = (
         ...state,
         createNewBucket: payload,
       };
-    case renderActionTypes.SET_BUCKET:
+    case renderActionTypes.SET_BUCKET_SUCCESS:
     case renderActionTypes.REMOVE_BUCKET:
       return {
         ...state,
@@ -39,6 +39,7 @@ export const renderReducer = (
         ...state,
         bucketDetails: payload,
       };
+    case renderActionTypes.SET_BUCKET_FAIL:
     default:
       return state;
   }

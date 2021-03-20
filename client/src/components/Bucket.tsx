@@ -12,8 +12,7 @@ interface BucketProps {
 const Bucket: React.FC<BucketProps> = ({ bucketId, name, location }) => {
   const dispatch = useDispatch();
 
-  const handleClick = (e: any) => {
-    dispatch(filesOn());
+  const handleClick = () => {
     dispatch(setBucket(bucketId));
   };
 

@@ -11,7 +11,11 @@ import { Button, Container, Row, Modal } from 'react-bootstrap';
 
 const BucketDetails = () => {
   const dispatch = useDispatch();
-  const bucketId = useSelector((state: any) => state.render.bucket);
+  const bucketId = useSelector((state: any) => state.render.bucket._id);
+  const bucketName = useSelector((state: any) => state.render.bucket.name);
+  const bucketLocation = useSelector(
+    (state: any) => state.render.bucket.location
+  );
 
   const [open, setOpen] = useState(false);
 
@@ -53,9 +57,9 @@ const BucketDetails = () => {
           Delete Bucket
         </Button>
       </Nav>
-      <Row>Bucket name:</Row>
-      <Row>Location:</Row>
-      <Row>Storage size:</Row>
+      <Row>Bucket name: {bucketName}</Row>
+      <Row>Location: {bucketLocation}</Row>
+      <Row>Storage size: 5GB</Row>
       <Nav>
         <div></div>
         <Button variant='danger' className='mt-3' onClick={handleBackClick}>

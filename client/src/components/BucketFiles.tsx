@@ -12,7 +12,7 @@ import { File } from '.';
 
 const Files = () => {
   const dispatch = useDispatch();
-  const bucketId = useSelector((state: any) => state.render.bucket);
+  const bucketId = useSelector((state: any) => state.render.bucket._id);
   const files = useSelector((state: any) => state.files);
 
   const handleClick = () => {
