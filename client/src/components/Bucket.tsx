@@ -1,5 +1,5 @@
 import { useDispatch } from 'react-redux';
-import { filesOn, setBucket } from '../redux/render/actions';
+import { setBucket } from '../redux/render/actions';
 import styled from 'styled-components/macro';
 import { Row, Col } from 'react-bootstrap';
 
