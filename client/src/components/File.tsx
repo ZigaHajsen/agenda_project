@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { deleteFile, getFiles } from '../redux/files/actions';
+import { deleteFile } from '../redux/files/actions';
 import prettyBytes from 'pretty-bytes';
 import styled from 'styled-components/macro';
 import { Row, Col, Modal, Button } from 'react-bootstrap';
