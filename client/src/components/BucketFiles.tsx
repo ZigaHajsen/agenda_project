@@ -1,10 +1,14 @@
 import { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { filesOff, removeBucket } from '../redux/render/actions';
+import {
+  filesOff,
+  removeBucket,
+  bucketDetailsOn,
+} from '../redux/render/actions';
 import { uploadFile, getFiles } from '../redux/files/actions';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
-import { File } from '../components';
+import { File } from '.';
 
 const Files = () => {
   const dispatch = useDispatch();
@@ -32,7 +36,12 @@ const Files = () => {
       <Container>
         <Row>
           <Button variant='success mt-3 disabled'>Files</Button>
-          <Button variant='success mt-3'>Details</Button>
+          <Button
+            variant='success mt-3'
+            onClick={() => dispatch(bucketDetailsOn())}
+          >
+            Details
+          </Button>
         </Row>
         <Nav className='mb-3 mt-3'>
           <div>All buckets ()</div>

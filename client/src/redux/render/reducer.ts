@@ -5,6 +5,7 @@ const initialState = {
   files: false,
   createNewBucket: false,
   bucket: null,
+  bucketDetails: false,
 };
 
 export const renderReducer = (
@@ -21,10 +22,6 @@ export const renderReducer = (
         createNewBucket: payload,
       };
     case renderActionTypes.SET_BUCKET:
-      return {
-        ...state,
-        bucket: payload,
-      };
     case renderActionTypes.REMOVE_BUCKET:
       return {
         ...state,
@@ -35,6 +32,12 @@ export const renderReducer = (
       return {
         ...state,
         files: payload,
+      };
+    case renderActionTypes.BUCKET_DETAILS_ON:
+    case renderActionTypes.BUCKET_DETAILS_OFF:
+      return {
+        ...state,
+        bucketDetails: payload,
       };
     default:
       return state;

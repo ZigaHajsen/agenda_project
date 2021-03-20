@@ -4,7 +4,7 @@ import { createNewBucketOn } from '../redux/render/actions';
 import { getBuckets } from '../redux/buckets/actions';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
-import { Bucket, CreateBucket } from '../components';
+import { Bucket, CreateBucket } from '.';
 
 const Buckets = () => {
   const dispatch = useDispatch();

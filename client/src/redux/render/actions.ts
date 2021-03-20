@@ -42,3 +42,17 @@ export const filesOff = () => (dispatch: redux.Dispatch) => {
     payload: false,
   });
 };
+
+export const bucketDetailsOn = () => (dispatch: redux.Dispatch) => {
+  dispatch({
+    type: renderActionTypes.BUCKET_DETAILS_ON,
+    payload: true,
+  });
+};
+
+export const bucketDetailsOff = () => (dispatch: redux.Dispatch) => {
+  dispatch({
+    type: renderActionTypes.BUCKET_DETAILS_OFF,
+    payload: false,
+  });
+};
