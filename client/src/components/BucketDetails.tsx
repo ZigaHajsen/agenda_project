@@ -1,15 +1,18 @@
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import {
   filesOff,
   removeBucket,
   bucketDetailsOff,
 } from '../redux/render/actions';
+import { deleteBucket, getBuckets } from '../redux/buckets/actions';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Modal } from 'react-bootstrap';
 
 const BucketDetails = () => {
   const dispatch = useDispatch();
+  const bucketId = useSelector((state: any) => state.render.bucket);
+
   const [open, setOpen] = useState(false);
 
   const openModal = () => {
@@ -22,9 +25,15 @@ const BucketDetails = () => {
   const handleBackClick = () => {
     dispatch(removeBucket());
     dispatch(filesOff());
+    dispatch(bucketDetailsOff());
   };
-  const handleClick = () => {
-    console.log('click');
+  const handleDeleteClick = () => {
+    dispatch(deleteBucket(bucketId));
+    dispatch(getBuckets());
+    dispatch(removeBucket());
+    dispatch(filesOff());
+    dispatch(bucketDetailsOff());
+    closeModal();
   };
 
   return (
@@ -59,7 +68,7 @@ const BucketDetails = () => {
           <Button variant='success' onClick={closeModal}>
             Close
           </Button>
-          <Button variant='danger' type='submit' onClick={handleClick}>
+          <Button variant='danger' type='submit' onClick={handleDeleteClick}>
             Delete
           </Button>
         </Modal.Footer>

@@ -40,3 +40,19 @@ export const createBucket = (name: string, location: string) => async (
     });
   }
 };
+
+export const deleteBucket = (bucketId: string) => async (
+  dispatch: redux.Dispatch
+) => {
+  try {
+    await axios.delete(`/api/buckets/${bucketId}`);
+
+    dispatch({
+      type: bucketActionTypes.DELETE_BUCKET_SUCCESS,
+    });
+  } catch (err) {
+    dispatch({
+      type: bucketActionTypes.DELETE_BUCKET_SUCCESS,
+    });
+  }
+};
