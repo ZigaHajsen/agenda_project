@@ -26,10 +26,9 @@ const Buckets = () => {
   }, [dispatch]);
 
   return (
-    <Container>
+    <Container className='bg-white'>
       <Nav>
         <h1>Bucket list</h1>
-        <div></div>
       </Nav>
       {render && <CreateBucket />}
       <Nav className='mb-3 mt-3'>

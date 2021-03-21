@@ -40,7 +40,7 @@ const BucketDetails = () => {
   };
 
   return (
-    <Container>
+    <Container className='bg-white'>
       <Nav>
         <h1>{bucketName}</h1>
         <div></div>
