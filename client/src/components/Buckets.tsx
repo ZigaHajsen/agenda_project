@@ -2,14 +2,24 @@ import { Fragment, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNewBucketOn } from '../redux/render/actions';
 import { getBuckets } from '../redux/buckets/actions';
+import { RenderModel, BucketModel } from '../models/interface-models';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { Bucket, CreateBucket } from '.';
 
+interface RenderState {
+  render: RenderModel;
+}
+interface BucketsState {
+  buckets: BucketModel[];
+}
+
 const Buckets = () => {
   const dispatch = useDispatch();
-  const buckets = useSelector((state: any) => state.buckets);
-  const render = useSelector((state: any) => state.render.createNewBucket);
+  const render = useSelector(
+    (state: RenderState) => state.render.createNewBucket
+  );
+  const buckets = useSelector((state: BucketsState) => state.buckets);
 
   useEffect(() => {
     dispatch(getBuckets());
@@ -35,7 +45,7 @@ const Buckets = () => {
           <Col>Location</Col>
         </TableNav>
         <div>
-          {buckets.map((bucket: any) => {
+          {buckets.map((bucket) => {
             const { _id, name, location } = bucket;
 
             return (

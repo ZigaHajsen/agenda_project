@@ -6,14 +6,25 @@ import {
   bucketDetailsOn,
 } from '../redux/render/actions';
 import { uploadFile, getFiles } from '../redux/files/actions';
+import { RenderModel, FileModel } from '../models/interface-models';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Col } from 'react-bootstrap';
 import { File } from '.';
 
+interface RenderState {
+  render: RenderModel;
+}
+
+interface FilesState {
+  files: FileModel[];
+}
+
 const Files = () => {
   const dispatch = useDispatch();
-  const bucketId = useSelector((state: any) => state.render.bucket._id);
-  const files = useSelector((state: any) => state.files);
+  const bucketId = useSelector(
+    (state: RenderState) => state.render.bucket!._id
+  );
+  const files = useSelector((state: FilesState) => state.files);
 
   const handleClick = () => {
     dispatch(removeBucket());
@@ -62,7 +73,7 @@ const Files = () => {
           <Col>Size</Col>
         </TableNav>
         <div>
-          {files.map((file: any) => {
+          {files.map((file) => {
             const { _id, name, size, lastModified } = file;
 
             return (

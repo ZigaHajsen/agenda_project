@@ -6,15 +6,24 @@ import {
   bucketDetailsOff,
 } from '../redux/render/actions';
 import { deleteBucket, getBuckets } from '../redux/buckets/actions';
+import { RenderModel } from '../models/interface-models';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Modal } from 'react-bootstrap';
 
+interface RenderState {
+  render: RenderModel;
+}
+
 const BucketDetails = () => {
   const dispatch = useDispatch();
-  const bucketId = useSelector((state: any) => state.render.bucket._id);
-  const bucketName = useSelector((state: any) => state.render.bucket.name);
+  const bucketId = useSelector(
+    (state: RenderState) => state.render.bucket!._id
+  );
+  const bucketName = useSelector(
+    (state: RenderState) => state.render.bucket!.name
+  );
   const bucketLocation = useSelector(
-    (state: any) => state.render.bucket.location
+    (state: RenderState) => state.render.bucket!.location
   );
 
   const [open, setOpen] = useState(false);
