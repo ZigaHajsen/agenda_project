@@ -47,7 +47,7 @@ const File: React.FC<FileProps> = ({
       </Col>
       <Col>{date.toLocaleDateString()}</Col>
       <Col>{prettyBytes(size)}</Col>
-      <MdDeleteForever className='mr-3 mt-1' onClick={openModal} />
+      <DeleteButton className='mr-3 mt-1' onClick={openModal} />
       <Modal show={open} onHide={closeModal}>
         <Modal.Body>Do you really want to delete this object?</Modal.Body>
         <Modal.Footer>
@@ -69,4 +69,10 @@ const FileRow = styled(Row)`
   border-left: black 2px solid;
   border-right: black 2px solid;
   border-bottom: grey 1px solid;
+`;
+
+const DeleteButton = styled(MdDeleteForever)`
+  &:hover {
+    color: red;
+  }
 `;

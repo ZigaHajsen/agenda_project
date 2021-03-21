@@ -19,7 +19,7 @@ const Bucket: React.FC<BucketProps> = ({ bucketId, name, location }) => {
   return (
     <BucketRow>
       <Col>
-        <span onClick={handleClick}>{name}</span>
+        <Span onClick={handleClick}>{name}</Span>
       </Col>
       <Col>{location}</Col>
     </BucketRow>
@@ -31,4 +31,10 @@ export default Bucket;
 const BucketRow = styled(Row)`
   border-left: black 2px solid;
   border-right: black 2px solid;
+`;
+
+const Span = styled.span`
+  &:hover {
+    background-color: lightgreen;
+  }
 `;
