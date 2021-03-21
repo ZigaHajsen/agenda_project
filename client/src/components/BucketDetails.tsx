@@ -41,6 +41,10 @@ const BucketDetails = () => {
 
   return (
     <Container>
+      <Nav>
+        <h1>{bucketName}</h1>
+        <div></div>
+      </Nav>
       <Row>
         <Button
           variant='success mt-3'

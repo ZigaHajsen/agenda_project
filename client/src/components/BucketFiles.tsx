@@ -20,6 +20,9 @@ const Files = () => {
   const bucketId = useSelector(
     (state: RenderState) => state.render.bucket!._id
   );
+  const bucketName = useSelector(
+    (state: RenderState) => state.render.bucket!.name
+  );
   const files = useSelector((state: FilesState) => state.files);
 
   const handleClick = () => {
@@ -38,6 +41,10 @@ const Files = () => {
 
   return (
     <Container>
+      <Nav>
+        <h1>{bucketName}</h1>
+        <div></div>
+      </Nav>
       <Row>
         <Button variant='success mt-3 disabled'>Files</Button>
         <Button

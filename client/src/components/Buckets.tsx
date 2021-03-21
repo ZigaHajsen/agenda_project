@@ -27,6 +27,10 @@ const Buckets = () => {
 
   return (
     <Container>
+      <Nav>
+        <h1>Bucket list</h1>
+        <div></div>
+      </Nav>
       {render && <CreateBucket />}
       <Nav className='mb-3 mt-3'>
         <div>All buckets ({buckets.length})</div>
