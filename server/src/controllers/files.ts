@@ -1,9 +1,8 @@
 import { Request, Response, NextFunction } from 'express';
-import { countReset } from 'node:console';
 import File from '../models/File';
 
 // @route     GET /api/buckets/:bucketId/files
-// @desc      Get files
+// @desc      Get all files from bucket
 // @access    Public
 export const getFiles = async (
   req: Request,
@@ -38,7 +37,7 @@ export const getFile = async (
 };
 
 // @route       DELETE api/files/:fileId
-// @desc        Delete file
+// @desc        Delete a file
 // @access      Public
 export const deleteFile = async (
   req: Request,
@@ -57,7 +56,7 @@ export const deleteFile = async (
 };
 
 // @route     POST /api/buckets/:bucketId/files
-// @desc      Add file
+// @desc      Add a file to bucket
 // @access    Public
 export const uploadFile = async (
   req: Request,

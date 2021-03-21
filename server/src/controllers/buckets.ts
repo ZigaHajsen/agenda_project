@@ -35,6 +35,9 @@ export const getBucket = async (
   }
 };
 
+// @route       DELETE api/buckets/:bucketId
+// @desc        Delete a bucket
+// @access      Public
 export const deleteBucket = async (
   req: Request,
   res: Response,
