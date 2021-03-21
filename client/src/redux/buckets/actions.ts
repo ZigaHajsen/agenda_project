@@ -1,7 +1,12 @@
 import axios from 'axios';
 import redux from 'redux';
 import { bucketActionTypes } from './types';
-import { createNewBucketOff } from '../render/actions';
+import {
+  createNewBucketOff,
+  filesOff,
+  removeBucket,
+  bucketDetailsOff,
+} from '../render/actions';
 
 export const getBuckets = () => async (dispatch: redux.Dispatch) => {
   try {
@@ -44,15 +49,17 @@ export const createBucket = (name: string, location: string) => async (
   }
 };
 
-export const deleteBucket = (bucketId: string) => async (
-  dispatch: redux.Dispatch
-) => {
+export const deleteBucket = (bucketId: string) => async (dispatch: any) => {
   try {
     await axios.delete(`/api/buckets/${bucketId}`);
 
     dispatch({
       type: bucketActionTypes.DELETE_BUCKET_SUCCESS,
     });
+    dispatch(getBuckets());
+    dispatch(filesOff());
+    dispatch(bucketDetailsOff());
+    dispatch(removeBucket());
   } catch (err) {
     dispatch({
       type: bucketActionTypes.DELETE_BUCKET_SUCCESS,

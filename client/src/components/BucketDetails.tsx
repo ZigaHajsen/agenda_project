@@ -37,15 +37,9 @@ const BucketDetails = () => {
 
   const handleBackClick = () => {
     dispatch(removeBucket());
-    dispatch(filesOff());
-    dispatch(bucketDetailsOff());
   };
   const handleDeleteClick = () => {
     dispatch(deleteBucket(bucketId));
-    dispatch(getBuckets());
-    dispatch(removeBucket());
-    dispatch(filesOff());
-    dispatch(bucketDetailsOff());
     closeModal();
   };
 

@@ -16,11 +16,13 @@ export const createNewBucketOff = () => (dispatch: redux.Dispatch) => {
   });
 };
 
-export const removeBucket = () => (dispatch: redux.Dispatch) => {
+export const removeBucket = () => (dispatch: any) => {
   dispatch({
     type: renderActionTypes.REMOVE_BUCKET,
     payload: null,
   });
+  dispatch(filesOff());
+  dispatch(bucketDetailsOff());
 };
 
 export const setBucket = (bucketId: string) => async (dispatch: any) => {

@@ -28,7 +28,6 @@ const Files = () => {
 
   const handleClick = () => {
     dispatch(removeBucket());
-    dispatch(filesOff());
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
