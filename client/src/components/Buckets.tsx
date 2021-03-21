@@ -1,4 +1,4 @@
-import { Fragment, useEffect } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { createNewBucketOn } from '../redux/render/actions';
 import { getBuckets } from '../redux/buckets/actions';
@@ -26,41 +26,34 @@ const Buckets = () => {
   }, [dispatch]);
 
   return (
-    <Fragment>
-      <Container>
-        {render && <CreateBucket />}
-        <Nav className='mb-3 mt-3'>
-          <div>All buckets ({buckets.length})</div>
-          <div>
-            <Button
-              variant='success'
-              onClick={() => dispatch(createNewBucketOn())}
-            >
-              Create New Bucket
-            </Button>
-          </div>
-        </Nav>
-        <TableNav>
-          <Col>Name</Col>
-          <Col>Location</Col>
-        </TableNav>
+    <Container>
+      {render && <CreateBucket />}
+      <Nav className='mb-3 mt-3'>
+        <div>All buckets ({buckets.length})</div>
         <div>
-          {buckets.map((bucket) => {
-            const { _id, name, location } = bucket;
-
-            return (
-              <Bucket
-                key={_id}
-                bucketId={_id}
-                name={name}
-                location={location}
-              />
-            );
-          })}
+          <Button
+            variant='success'
+            onClick={() => dispatch(createNewBucketOn())}
+          >
+            Create New Bucket
+          </Button>
         </div>
-        <Border></Border>
-      </Container>
-    </Fragment>
+      </Nav>
+      <TableNav>
+        <Col>Name</Col>
+        <Col>Location</Col>
+      </TableNav>
+      <div>
+        {buckets.map((bucket) => {
+          const { _id, name, location } = bucket;
+
+          return (
+            <Bucket key={_id} bucketId={_id} name={name} location={location} />
+          );
+        })}
+      </div>
+      <Border></Border>
+    </Container>
   );
 };
 

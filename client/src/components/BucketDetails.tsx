@@ -1,11 +1,7 @@
 import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import {
-  filesOff,
-  removeBucket,
-  bucketDetailsOff,
-} from '../redux/render/actions';
-import { deleteBucket, getBuckets } from '../redux/buckets/actions';
+import { removeBucket, bucketDetailsOff } from '../redux/render/actions';
+import { deleteBucket } from '../redux/buckets/actions';
 import { RenderModel } from '../models/interface-models';
 import styled from 'styled-components/macro';
 import { Button, Container, Row, Modal } from 'react-bootstrap';
