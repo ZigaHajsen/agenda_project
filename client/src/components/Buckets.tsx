@@ -11,7 +11,7 @@ interface RenderState {
   render: RenderModel;
 }
 interface BucketsState {
-  buckets: BucketModel[];
+  buckets: BucketModel[] | [];
 }
 
 const Buckets = () => {
@@ -48,7 +48,7 @@ const Buckets = () => {
         <Col>Location</Col>
       </TableNav>
       <div>
-        {buckets.map((bucket) => {
+        {buckets.map((bucket: BucketModel) => {
           const { _id, name, location } = bucket;
 
           return (

@@ -12,7 +12,7 @@ interface RenderState {
 }
 
 interface FilesState {
-  files: FileModel[];
+  files: FileModel[] | [];
 }
 
 const Files = () => {
@@ -74,7 +74,7 @@ const Files = () => {
         <Col>Size</Col>
       </TableNav>
       <div>
-        {files.map((file) => {
+        {files.map((file: FileModel) => {
           const { _id, name, size, lastModified } = file;
 
           return (
